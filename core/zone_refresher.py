@@ -7,12 +7,12 @@ class ZoneRefresher:
         self.zones = {}
         self.job = None
     
-    def insert(self, zone: InteractionZone, identifier):
+    def insert(self, zone: InteractionZone, identifier: str):
         if identifier in self.zones:
             self.cancel_zone_asynchronous_tasks(identifier) 
         self.zones[identifier] = zone
     
-    def remove(self, identifier):
+    def remove(self, identifier: str):
         if identifier in self.zones:
             self.cancel_zone_asynchronous_tasks(identifier)
             del self.zones[identifier]

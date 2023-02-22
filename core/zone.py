@@ -1,3 +1,5 @@
+from talon.skia import Rect
+
 class Zone:
     def contains_position(self, horizontal: int, vertical: int):
         pass
@@ -11,6 +13,7 @@ class RectangleZone(Zone):
         self.right = right
         self.top = top
         self.bottom = bottom
+        self.rect = Rect(left,top,right-left,bottom-top)
 
     def contains_position(self, horizontal: int, vertical: int):
         return self.left < horizontal and self.right > horizontal and self.bottom > vertical and self.top < vertical
@@ -32,6 +35,9 @@ class RectangleZone(Zone):
     
     def get_bottom(self):
         return self.bottom
+    
+    def get_rect(self):
+        return self.rect
         
 class RectangleInteractionValue:
     def __init__(self, percentage_right, percentage_up):

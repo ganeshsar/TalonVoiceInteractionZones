@@ -1,4 +1,4 @@
-from .zone import Zone
+from .zone import *
 
 class Display:
     def __init__(self):
@@ -19,6 +19,9 @@ class Display:
 
     def handle_interaction_completed(self):
         pass
+    
+    def draw(self, canvas):
+        pass
 
 class PrintoutDisplay(Display):
     def handle_interaction_start(self, time_limit_on_next_action_call):
@@ -29,3 +32,13 @@ class PrintoutDisplay(Display):
     
     def handle_interaction_completed(self):
         print(f'{self.name}: interaction completed')
+        
+class RectangleDisplay(Display): 
+    
+    
+    def set_zone(self, zone: RectangleZone):
+        self.zone = zone
+    
+    def draw(self, canvas):
+        canvas.draw_rect(self.zone.get_rect())
+        pass
