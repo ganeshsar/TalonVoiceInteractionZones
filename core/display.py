@@ -1,4 +1,5 @@
 from .zone import *
+from talon.skia import Paint, Rect
 
 class Display:
     def __init__(self):
@@ -40,5 +41,21 @@ class RectangleDisplay(Display):
         self.zone = zone
     
     def draw(self, canvas):
+        paint = canvas.paint
+        
+        paint.text_align = canvas.paint.TextAlign.CENTER
+        paint.text_size = 36
+        paint.color = "#b4b4b489"
+        paint.style = Paint.Style.FILL
+        r = self.zone.get_rect().center
+        text = self.name
+        tr = paint.measure_text(text)[1]
+        
+        canvas.draw_text(text,r.x+tr.center.x/2,r.y+tr.center.y/2)
+        
+        
+        paint.color = "#b4b4b489"
+        paint.style = Paint.Style.STROKE
+        paint.stroke_width = 0.5
         canvas.draw_rect(self.zone.get_rect())
         pass

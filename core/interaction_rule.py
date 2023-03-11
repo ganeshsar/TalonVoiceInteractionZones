@@ -5,7 +5,7 @@ from talon import cron
 class InteractionRule:
     def __init__(self, warmup: int, cooldown: Union[int, None], action, name):
         self.action = action
-        self.warmup = warmup
+        self.warmup = warmup#how long does it need to be inside
         self.cooldown = cooldown
         self.job = None
         self.reset_state()
