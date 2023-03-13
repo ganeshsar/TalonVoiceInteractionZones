@@ -29,6 +29,9 @@ class DisplayDrawer:
         self.canvas.unregister("draw", self.draw) 
         
     def draw(self, canvas) -> None:
+        if self.active==False:
+            return
+        
         for d in self.displays.values():
             d.draw(canvas)
         pass
